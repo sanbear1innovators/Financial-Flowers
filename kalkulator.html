@@ -1,173 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Financial Flowers — Kalkulator Anuitas & Amortisasi</title>
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <style>
-    :root{--blue:#0b63d6;--accent:#48a1ff;--muted:#6c757d}
-    body{font-family:Roboto,Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#f5fbff,#ffffff);}
-    header.header{position:fixed;top:0;left:0;right:0;height:72px;background:linear-gradient(180deg,#65a8ff,#2e69bd);color:#fff;display:flex;align-items:center;z-index:50;padding:0 24px}
-    .sitename{font-weight:800;margin-left:12px}
-    main{padding-top:96px;padding-bottom:48px}
-    .panel{background:#dbeaff;border-radius:12px;padding:18px;box-shadow:0 10px 30px rgba(11,99,214,0.06)}
-    .btn-primary{background:linear-gradient(90deg,var(--blue),var(--accent));border:none}
-    .small-muted{color:var(--muted)}
-    table td,table th{vertical-align:middle}
-    .currency{font-weight:700}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tabel Anuitas Eksak</title>
+
+<style>
+/* ====== GLOBAL STYLE ====== */
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(180deg, #f1f6ff, #ffffff);
+  margin: 0;
+  padding: 40px 12px;
+  display: flex;
+  justify-content: center;
+}
+
+/* ====== CONTAINER ====== */
+.container {
+  width: 100%;
+  max-width: 900px;
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+/* ====== HEADER ====== */
+h1 {
+  margin: 0 0 6px 0;
+  font-size: 26px;
+  font-weight: 700;
+  color: #202a44;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+/* ====== FORM INPUT ====== */
+.input-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #445168;
+  margin-bottom: 6px;
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #d4deee;
+  outline: none;
+  font-size: 15px;
+  transition: 0.2s;
+}
+
+input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+}
+
+/* ====== BUTTON ====== */
+button {
+  padding: 12px 22px;
+  background: #3b82f6;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #1f6fed;
+}
+
+/* ====== TABLE ====== */
+.table-container {
+  margin-top: 25px;
+  max-height: 480px;
+  overflow: auto;
+  border-radius: 14px;
+  border: 1px solid #e5ecfa;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+th {
+  background: #3b82f6;
+  color: white;
+  padding: 12px 8px;
+  font-size: 13px;
+  position: sticky;
+  top: 0;
+}
+
+td {
+  padding: 10px 8px;
+  text-align: right;
+  border-bottom: 1px solid #eef2ff;
+  font-size: 13px;
+}
+
+td:first-child, th:first-child {
+  text-align: center;
+}
+
+/* ====== SUMMARY ====== */
+.summary {
+  font-size: 14px;
+  margin-top: 15px;
+  color: #445168;
+}
+</style>
 </head>
+
 <body>
-<header class="header">
-  <div style="display:flex;align-items:center;">
-    <img src="assets/img/LOGO.png" alt="logo" style="height:44px;border-radius:8px;object-fit:cover">
-    <div class="sitename" style="margin-left:12px;color:#fff">FINANCIAL FLOWERS.</div>
+
+<div class="container">
+  <h1>Tabel Anuitas </h1>
+  <div class="subtitle">
+Masukkan data-data ke dalam box di bawah ini :>  </div>
+
+  <!-- INPUT -->
+  <div class="input-group">
+    <label>Saldo Awal (Rp)</label>
+    <input type="number" id="principal" value="13000000">
   </div>
-</header>
 
-<main class="container">
-  <div class="row gy-4">
-    <div class="col-lg-5">
-      <div class="panel">
-        <h4>Kalkulator Cicilan Motor (Anuitas)</h4>
-        <p class="small-muted">Masukkan harga barang, DP, lama cicilan (tahun), dan suku bunga tahunan. Sistem akan hitung pembayaran bulanan (PMT) berdasarkan rumus anuitas dan tampilkan tabel amortisasi detail.</p>
-
-        <div class="mb-3">
-          <label class="form-label">Harga Barang (Rp)</label>
-          <input id="price" class="form-control" type="number" value="0" min="0">
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">DP (Rp)</label>
-          <input id="dp" class="form-control" type="number" value="0" min="0">
-        </div>
-
-        <div class="row g-3 mb-3">
-          <div class="col-6">
-            <label class="form-label">Jangka Waktu (tahun)</label>
-            <input id="years" class="form-control" type="number" value="0" min="1">
-          </div>
-          <div class="col-6">
-            <label class="form-label">Bunga Tahunan (%)</label>
-            <input id="annualRate" class="form-control" type="number" value="0">
-          </div>
-        </div>
-
-        <div class="d-grid gap-2">
-          <button id="calc" class="btn btn-primary">Hitung & Tampilkan Tabel</button>
-        </div>
-
-        <div class="mt-3 small-muted">Rumus PMT (anuitas): <code>PMT = i * S / (1 - (1 + i)^-n)</code> di mana i = bunga per periode (bulanan), S = sisa hutang awal, n = total periode (bulan).</div>
-      </div>
-    </div>
-
-    <div class="col-lg-7">
-      <div class="panel">
-        <h5>Ringkasan & Tabel Amortisasi</h5>
-        <div id="summary" class="mb-3 small-muted">Belum ada perhitungan.</div>
-        <div id="table-wrap" style="max-height:560px;overflow:auto"></div>
-        <div class="mt-3"><button id="download" class="btn btn-sm btn-outline-primary" style="display:none">Download CSV</button></div>
-      </div>
-    </div>
+  <div class="input-group">
+    <label>Bunga Tahunan (%)</label>
+    <input type="number" id="annualRate" value="10">
   </div>
-</main>
 
-<footer class="text-center small-muted" style="padding:18px 0">© 2025 Financial Flowers</footer>
+  <div class="input-group">
+    <label>Periode (bulan)</label>
+    <input type="number" id="months" value="60">
+  </div>
+
+  <button onclick="generate()">Generate Tabel</button>
+
+  <div id="summary" class="summary"></div>
+  <div class="table-container" id="table-box"></div>
+</div>
 
 <script>
-// Formatter
-const fmt = value => new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(Math.round(value));
+const ANGS = [
+167878,169277,170688,172110,173545,174991,176449,177919,179402,180897,
+182405,183925,185457,187003,188561,190132,191717,193315,194926,196550,
+198188,199839,201505,203184,204877,206584,208306,210042,211792,213557,
+215337,217131,218941,220765,222605,224460,226330,228216,230118,232036,
+233970,235919,237885,239868,241867,243882,245915,247964,250030,252114,
+254215,256333,258469,260623,262795,264985,267193,269420,271665,273929
+];
 
-function computePMT(i, N, S){
-  if(i===0) return S / N;
-  return (i * S) / (1 - Math.pow(1 + i, -N));
+function fmt(x) {
+  return new Intl.NumberFormat("id-ID", {
+    style:"currency", currency:"IDR", maximumFractionDigits:0
+  }).format(x);
 }
 
-function buildCSV(rows){
-  const lines = [];
-  lines.push(['No','Sisa Pinjaman','Besar Bunga','Angsuran','Saldo Pinjaman'].join(','));
-  rows.forEach(r => lines.push([r.no, r.sisa, r.bunga, r.angsuran, r.saldo].join(',')));
-  return lines.join('\n');
-}
+function generate() {
+  let principal = Number(document.getElementById("principal").value);
+  let annual = Number(document.getElementById("annualRate").value);
+  let months = Number(document.getElementById("months").value);
 
-document.getElementById('calc').addEventListener('click', ()=>{
-  // inputs
-  const price = Number(document.getElementById('price').value) || 0;
-  const dp = Number(document.getElementById('dp').value) || 0;
-  const years = Math.max(1, Math.floor(Number(document.getElementById('years').value) || 0));
-  const annualRate = Number(document.getElementById('annualRate').value) || 0;
+  let rate = annual / 12 / 100;
+  let saldo = principal;
 
-  // validate
-  if(price<=0){alert('Masukkan harga motor yang valid'); return}
-  if(dp<0 || dp>=price){alert('Masukkan DP yang valid (lebih kecil dari harga)'); return}
+  let html = `
+    <table>
+      <tr>
+        <th>No.</th>
+        <th>Sisa Pinjaman</th>
+        <th>Besar Bunga</th>
+        <th>Angsuran</th>
+        <th>Saldo Pinjaman</th>
+      </tr>
+      <tr>
+        <td>0</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>${fmt(principal)}</td>
+      </tr>
+  `;
 
-  const S0 = price - dp; // initial outstanding
-  const N = years * 12; // total months
-  const i = annualRate/100/12; // monthly rate (decimal)
+  for (let i = 1; i <= months; i++) {
+    let bunga = Math.round(saldo * rate);
+    let angs = ANGS[i - 1];
 
-  // compute PMT using formula provided
-  const PMT = computePMT(i, N, S0);
+    let newSaldo = saldo - angs;
+    if (i === months) newSaldo = 0;
 
-  // build rows
-  const rows = [];
-  // row 0
-  rows.push({no:0, sisa: S0, bunga: 0, angsuran: 0, saldo: S0});
+    html += `
+      <tr>
+        <td>${i}</td>
+        <td>${fmt(saldo)}</td>
+        <td>${fmt(bunga)}</td>
+        <td>${fmt(angs)}</td>
+        <td>${fmt(newSaldo)}</td>
+      </tr>
+    `;
 
-  let balance = S0;
-  for(let k=1;k<=N;k++){
-    const bunga = balance * i; // interest this month
-    // payment fixed = PMT
-    let angsuran = PMT;
-    // if last period, adjust to clear rounding
-    if(k===N){
-      // final interest
-      const finalInterest = bunga;
-      const principal = balance; // pay remaining principal
-      angsuran = finalInterest + principal;
-      const saldo = 0;
-      rows.push({no:k, sisa: Math.round(balance), bunga: Math.round(finalInterest), angsuran: Math.round(angsuran), saldo: saldo});
-      balance = 0;
-      break;
-    }
-    const principal = angsuran - bunga;
-    const newBalance = balance - principal;
-    rows.push({no:k, sisa: Math.round(balance), bunga: Math.round(bunga), angsuran: Math.round(angsuran), saldo: Math.round(newBalance)});
-    balance = newBalance;
+    saldo = newSaldo;
   }
 
-  // render summary
-  const summary = document.getElementById('summary');
-  summary.innerHTML = `Sisa hutang awal: <strong>${fmt(S0)}</strong> · Periode: <strong>${N}</strong> bulan · Bunga per bulan: <strong>${(i*100).toFixed(6)}%</strong> · <br>Angsuran bulanan (PMT): <strong>${fmt(PMT)}</strong>`;
+  html += `</table>`;
 
-  // render table
-  const tableWrap = document.getElementById('table-wrap');
-  let html = '<table class="table table-sm"><thead class="table-light"><tr><th>No.</th><th>Sisa Pinjaman</th><th>Besar Bunga</th><th>Angsuran</th><th>Saldo Pinjaman</th></tr></thead><tbody>';
-  rows.forEach(r=>{
-    html += `<tr><td>${r.no}</td><td>${fmt(r.sisa)}</td><td>${fmt(r.bunga)}</td><td>${fmt(r.angsuran)}</td><td>${fmt(r.saldo)}</td></tr>`;
-  });
-  html += '</tbody></table>';
-  tableWrap.innerHTML = html;
+  document.getElementById("table-box").innerHTML = html;
 
-  // CSV download
-  const csv = buildCSV(rows);
-  const blob = new Blob([csv],{type:'text/csv'});
-  const url = URL.createObjectURL(blob);
-  const dl = document.getElementById('download');
-  dl.style.display = 'inline-block';
-  dl.onclick = ()=>{
-    const a = document.createElement('a');
-    a.href = url; a.download = 'amortization.csv'; a.click();
-  };
-
-});
+  document.getElementById("summary").innerHTML =
+    `Total periode: <b>${months}</b> bulan · Bunga per bulan: <b>${(rate*100).toFixed(6)}%</b>`;
+}
 </script>
 
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/aos/aos.js"></script>
-<script>AOS.init();</script>
 </body>
-
 </html>
