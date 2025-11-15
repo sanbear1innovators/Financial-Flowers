@@ -1,142 +1,148 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tabel Anuitas Eksak</title>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tabel Anuitas Ultra Pro</title>
 <style>
-/* ====== GLOBAL STYLE ====== */
-body {
-  font-family: "Poppins", sans-serif;
-  background: linear-gradient(180deg, #f1f6ff, #ffffff);
-  margin: 0;
-  padding: 40px 12px;
-  display: flex;
-  justify-content: center;
-}
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* ====== CONTAINER ====== */
-.container {
-  width: 100%;
-  max-width: 900px;
-  background: #ffffff;
-  padding: 28px;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-}
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(circle at top, #0a0f24, #000000 70%);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 12px;
+  }
 
-/* ====== HEADER ====== */
-h1 {
-  margin: 0 0 6px 0;
-  font-size: 26px;
-  font-weight: 700;
-  color: #202a44;
-}
+  .container {
+    width: 100%;
+    max-width: 950px;
+    background: rgb(153, 188, 205);
+    padding: 32px;
+    border-radius: 18px;
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(20, 239, 255, 0.12);
+    box-shadow: 0 0 25px rgb(0, 132, 255);
+  }
 
-.subtitle {
-  color: #64748b;
-  font-size: 14px;
-  margin-bottom: 22px;
-}
+  h1 {
+    margin: 0 0 6px 0;
+    font-size: 30px;
+    font-weight: 700;
+    background: linear-gradient(90deg,#176ea9,#00eaff,#14ffb9);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
 
-/* ====== FORM INPUT ====== */
-.input-group {
-  margin-bottom: 20px;
-}
+  .subtitle {
+    color: #192b5b;
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
 
-label {
-  font-size: 14px;
-  font-weight: 500;
-  color: #445168;
-  margin-bottom: 6px;
-  display: block;
-}
+  .input-group {
+    margin-bottom: 20px;
+  }
 
-input {
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid #d4deee;
-  outline: none;
-  font-size: 15px;
-  transition: 0.2s;
-}
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #2d3d64;
+    margin-bottom: 6px;
+    display: block;
+  }
 
-input:focus {
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
-}
+  input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.1);
+    color: #10316b;
+    font-size: 15px;
+    outline: none;
+    transition: 0.25s;
+  }
 
-/* ====== BUTTON ====== */
-button {
-  padding: 12px 22px;
-  background: #3b82f6;
-  border: none;
-  border-radius: 12px;
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s;
-}
+  input:focus {
+    border-color: #58c6ff;
+    box-shadow: 0 0 8px #00c3ff;
+  }
 
-button:hover {
-  background: #1f6fed;
-}
+  button {
+    padding: 12px 28px;
+    background: linear-gradient(90deg,#007bff,#00eaff);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+    letter-spacing: 1px;
+    box-shadow: 0 0 12px rgba(0,200,255,0.4);
+  }
 
-/* ====== TABLE ====== */
-.table-container {
-  margin-top: 25px;
-  max-height: 480px;
-  overflow: auto;
-  border-radius: 14px;
-  border: 1px solid #e5ecfa;
-}
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(0,200,255,0.65);
+  }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: white;
-}
+  .table-container {
+    margin-top: 25px;
+    max-height: 480px;
+    overflow: auto;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(122, 211, 255, 0.35);
+  }
 
-th {
-  background: #3b82f6;
-  color: white;
-  padding: 12px 8px;
-  font-size: 13px;
-  position: sticky;
-  top: 0;
-}
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
 
-td {
-  padding: 10px 8px;
-  text-align: right;
-  border-bottom: 1px solid #eef2ff;
-  font-size: 13px;
-}
+  th {
+    background: rgba(0,170,255,0.3);
+    color: #dff3ff;
+    padding: 12px 8px;
+    font-size: 13px;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(8px);
+  }
 
-td:first-child, th:first-child {
-  text-align: center;
-}
+  td {
+    padding: 10px 8px;
+    text-align: right;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    font-size: 13px;
+    color: #0a1123;
+  }
 
-/* ====== SUMMARY ====== */
-.summary {
-  font-size: 14px;
-  margin-top: 15px;
-  color: #445168;
-}
+  td:first-child, th:first-child {
+    text-align: center;
+  }
+
+  .summary {
+    font-size: 14px;
+    margin-top: 15px;
+    color: #242f47;
+  }
 </style>
 </head>
 
 <body>
-
 <div class="container">
-  <h1>Tabel Anuitas </h1>
-  <div class="subtitle">
-Masukkan data-data ke dalam box di bawah ini :>  </div>
+  <h1>Tabel Anuitas</h1>
+  <div class="subtitle">Masukkan data-data ke dalam box di bawah ini :</div>
 
-  <!-- INPUT -->
   <div class="input-group">
     <label>Saldo Awal (Rp)</label>
     <input type="number" id="principal" value="13000000">
@@ -152,7 +158,7 @@ Masukkan data-data ke dalam box di bawah ini :>  </div>
     <input type="number" id="months" value="60">
   </div>
 
-  <button onclick="generate()">Generate Tabel</button>
+  <button onclick="generate()">Generate</button>
 
   <div id="summary" class="summary"></div>
   <div class="table-container" id="table-box"></div>
@@ -169,15 +175,17 @@ const ANGS = [
 ];
 
 function fmt(x) {
-  return new Intl.NumberFormat("id-ID", {
-    style:"currency", currency:"IDR", maximumFractionDigits:0
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    maximumFractionDigits: 0
   }).format(x);
 }
 
 function generate() {
-  let principal = Number(document.getElementById("principal").value);
-  let annual = Number(document.getElementById("annualRate").value);
-  let months = Number(document.getElementById("months").value);
+  let principal = Number(document.getElementById('principal').value);
+  let annual = Number(document.getElementById('annualRate').value);
+  let months = Number(document.getElementById('months').value);
 
   let rate = annual / 12 / 100;
   let saldo = principal;
@@ -222,12 +230,11 @@ function generate() {
 
   html += `</table>`;
 
-  document.getElementById("table-box").innerHTML = html;
+  document.getElementById('table-box').innerHTML = html;
 
-  document.getElementById("summary").innerHTML =
-    `Total periode: <b>${months}</b> bulan · Bunga per bulan: <b>${(rate*100).toFixed(6)}%</b>`;
+  document.getElementById('summary').innerHTML =
+    `Total periode: <b>${months}</b> bulan · Bunga per bulan: <b>${(rate * 100).toFixed(6)}%</b>`;
 }
 </script>
-
 </body>
 </html>
